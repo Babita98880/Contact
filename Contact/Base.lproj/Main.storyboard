@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Contact Yet !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQx-aV-uMU">
-                                <rect key="frame" x="134" y="852" width="125" height="21"/>
+                                <rect key="frame" x="120" y="416" width="285" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a14-cu-Ff9">
-                                <rect key="frame" x="0.0" y="155" width="393" height="697"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="W6B-mi-Zjf" detailTextLabel="UOL-Aj-Gfe" style="IBUITableViewCellStyleSubtitle" id="1Ln-0b-z3X">
@@ -56,15 +56,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="jQx-aV-uMU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7AX-VA-3bh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a14-cu-Ff9" secondAttribute="trailing" id="9uq-8Y-O6X"/>
-                            <constraint firstAttribute="bottom" secondItem="a14-cu-Ff9" secondAttribute="bottom" id="A5C-IN-EZN"/>
-                            <constraint firstItem="jQx-aV-uMU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GJg-3P-oNp"/>
-                            <constraint firstItem="a14-cu-Ff9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OSZ-ei-eDe"/>
-                            <constraint firstItem="jQx-aV-uMU" firstAttribute="top" secondItem="a14-cu-Ff9" secondAttribute="bottom" id="OtQ-W0-qTe"/>
-                            <constraint firstAttribute="bottom" secondItem="a14-cu-Ff9" secondAttribute="bottom" id="c3S-w4-uM1"/>
-                            <constraint firstAttribute="bottom" secondItem="a14-cu-Ff9" secondAttribute="bottom" id="cTf-nj-2qK"/>
-                            <constraint firstItem="a14-cu-Ff9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zQg-JX-oPG"/>
+                            <constraint firstItem="a14-cu-Ff9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5A9-tW-bJc"/>
+                            <constraint firstAttribute="trailing" secondItem="jQx-aV-uMU" secondAttribute="trailing" id="OWo-vY-TrJ"/>
+                            <constraint firstAttribute="bottom" secondItem="a14-cu-Ff9" secondAttribute="bottom" id="PiL-FP-Wvz"/>
+                            <constraint firstAttribute="trailing" secondItem="a14-cu-Ff9" secondAttribute="trailing" id="amF-rL-JFJ"/>
+                            <constraint firstItem="a14-cu-Ff9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oTD-gs-JZl"/>
+                            <constraint firstItem="jQx-aV-uMU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="12" id="oxU-oJ-vey"/>
+                            <constraint firstItem="jQx-aV-uMU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="uWt-4i-2J2"/>
+                            <constraint firstAttribute="trailing" secondItem="jQx-aV-uMU" secondAttribute="trailing" constant="120" id="vds-sO-aP3"/>
+                            <constraint firstAttribute="trailing" secondItem="jQx-aV-uMU" secondAttribute="trailing" constant="120" id="xdi-wq-DND"/>
+                            <constraint firstItem="jQx-aV-uMU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zNz-72-pE3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="5E4-fC-r8p">

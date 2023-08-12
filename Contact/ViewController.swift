@@ -16,7 +16,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         title = "Contacts"
         table.delegate = self
         table.dataSource = self
+        loadInitialContacts()
     }
+    // Load initial contacts
+      func loadInitialContacts() {
+          models = [
+              ("John Doe", "john@example.com", "123-456-7890"),
+              ("Jane Smith", "jane@example.com", "987-654-3210")
+          ]
+          table.reloadData()
+      }
     @IBAction func didTapNewContact(){
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "new") as? EntryViewController {
             vc.title = "New Contact"
@@ -43,8 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = models[indexPath.row].name
         cell.detailTextLabel?.text = models[indexPath.row].mobileNumber
-        
-        
+        print(cell)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

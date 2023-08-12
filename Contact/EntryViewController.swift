@@ -16,6 +16,10 @@ class EntryViewController: UIViewController {
         super.viewDidLoad()
         nameField.becomeFirstResponder()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSave))
+        // Set placeholders for text fields
+               nameField.placeholder = "Name"
+               emailField.placeholder = "Email (Optional)"
+               phoneField.placeholder = "Phone"
     }
     @objc func didTapSave(){
         if let name = nameField.text, !name.isEmpty,

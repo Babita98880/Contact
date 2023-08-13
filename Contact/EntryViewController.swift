@@ -17,7 +17,13 @@ class EntryViewController: UIViewController {
     
         super.viewDidLoad()
         nameField.becomeFirstResponder()
+       
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSave))
+        // Set the color of the Save button
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.orange
+        // Set the color of the back button
+        navigationController?.navigationBar.tintColor = UIColor.orange
         // Set placeholders for text fields
                nameField.placeholder = "Name"
                emailField.placeholder = "Email (Optional)"

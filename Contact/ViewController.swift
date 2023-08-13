@@ -29,13 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let storedData = UserDefaults.standard.data(forKey: "items") {
                    do {
                        contacts = try JSONDecoder().decode([Contact].self, from: storedData)
-//                                   for x in 0..<contacts.count {
-//                                               let newContact = contacts[x]
-//                                       self.contacts.append(Contact(name: newContact.name, email: newContact.email, mobileNumber: newContact.mobileNumber))
-//                                               label.isHidden = true
-//                                               table.isHidden = false
-//
-//                                 }
+
                        updateEmptyState()
                        table.reloadData()
                    } catch let err {
@@ -144,24 +138,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
+//    func deleteContact(at indexPath: IndexPath) {
+//        contacts.remove(at: indexPath.row)
+//        table.deleteRows(at: [indexPath], with: .fade)
+//        updateEmptyState()
+//        saveContactsToUserDefaults()
+//    }
     func deleteContact(at indexPath: IndexPath) {
+        let contact = contacts[indexPath.row]
+        
+        let alertController = UIAlertController(title: "Delete Contact", message: "Are you sure you want to delete this contact?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            self?.performDeleteContact(at: indexPath)
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+  
+    private func performDeleteContact(at indexPath: IndexPath) {
         contacts.remove(at: indexPath.row)
         table.deleteRows(at: [indexPath], with: .fade)
         updateEmptyState()
         saveContactsToUserDefaults()
     }
-    func saveContactsToUserDefaults() {
-        var contactsDict: [String: [String: Any]] = [:]
-        for (index, contact) in contacts.enumerated() {
-            let contactDict: [String: Any] = [
-                "name": contact.name,
-                "email": contact.email,
-                "phone": contact.mobileNumber
-            ]
-            contactsDict["contact_\(index)"] = contactDict
-            print(contactsDict)
-        }
-        UserDefaults.standard.set(contactsDict, forKey: "contacts")
-    }
 
+//    func saveContactsToUserDefaults() {
+//        var contactsDict: [String: [String: Any]] = [:]
+//        for (index, contact) in contacts.enumerated() {
+//            let contactDict: [String: Any] = [
+//                "name": contact.name,
+//                "email": contact.email,
+//                "phone": contact.mobileNumber
+//            ]
+//            contactsDict["contact_\(index)"] = contactDict
+//            print(contactsDict)
+//        }
+//        UserDefaults.standard.set(contactsDict, forKey: "contacts")
+//    }
+    func saveContactsToUserDefaults() {
+        if let encoded = try? JSONEncoder().encode(contacts) {
+             UserDefaults.standard.set(encoded, forKey: "items")
+         }
+    }
 }

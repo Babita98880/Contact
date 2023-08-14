@@ -19,6 +19,10 @@ class ContactViewController: UIViewController {
         nameLabel.text = nameTitle
         mobileLabel.text = mobileTitle
         emailLabel.text = emailTitle
+        // Set the color of the Save button
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.orange
+        // Set the color of the back button
+        navigationController?.navigationBar.tintColor = UIColor.orange
         // Do any additional setup after loading the view.
     }
     

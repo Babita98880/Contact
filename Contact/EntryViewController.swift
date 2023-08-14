@@ -12,10 +12,16 @@ class EntryViewController: UIViewController {
     @IBOutlet var emailField: UITextField!
     @IBOutlet var phoneField: UITextField!
     var contacts: [Contact] = []
+    public var contact: Contact?
     public var completion :((String, String, String)-> Void)?
     override func viewDidLoad() {
-    
+      
         super.viewDidLoad()
+        // Set the initial values for text fields using the 'contact' data
+        nameField.text = contact?.name
+        emailField.text = contact?.email
+        phoneField.text = contact?.mobileNumber
+
         nameField.becomeFirstResponder()
        
         

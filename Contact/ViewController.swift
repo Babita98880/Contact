@@ -59,7 +59,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 guard let self = self else { return }
                 vc.navigationController?.popToRootViewController(animated: true)
                 self.contacts.append(Contact(name: contactName, email: contactEmail, mobileNumber: contactPhone))
-//                self.contacts.append((contactName, contactEmail, contactPhone))
                 self.updateEmptyState()
                 self.table.reloadData()
                 self.saveItemsToUserDefaults() // Save the updated items array
@@ -122,9 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "new") as? EntryViewController {
             vc.title = "Edit Contact"
             vc.navigationItem.largeTitleDisplayMode = .never
-            vc.nameField.text = contact.name
-            vc.emailField.text = contact.email
-            vc.phoneField.text = contact.mobileNumber
+            vc.contact = contact 
             vc.completion = { [weak self] contactName, contactEmail, contactPhone in
                 guard let self = self else { return }
                 vc.navigationController?.popToRootViewController(animated: true)
@@ -133,17 +130,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.contacts[indexPath.row] = updatedContact // Update the array
                 self.table.reloadData()
                 self.updateEmptyState()
+                self.saveItemsToUserDefaults()
             }
             navigationController?.pushViewController(vc, animated: true)
         }
     }
 
-//    func deleteContact(at indexPath: IndexPath) {
-//        contacts.remove(at: indexPath.row)
-//        table.deleteRows(at: [indexPath], with: .fade)
-//        updateEmptyState()
-//        saveContactsToUserDefaults()
-//    }
+
     func deleteContact(at indexPath: IndexPath) {
         let contact = contacts[indexPath.row]
         
@@ -159,30 +152,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         present(alertController, animated: true, completion: nil)
     }
-  
+
     private func performDeleteContact(at indexPath: IndexPath) {
         contacts.remove(at: indexPath.row)
         table.deleteRows(at: [indexPath], with: .fade)
         updateEmptyState()
-        saveContactsToUserDefaults()
+        saveItemsToUserDefaults()
     }
 
-//    func saveContactsToUserDefaults() {
-//        var contactsDict: [String: [String: Any]] = [:]
-//        for (index, contact) in contacts.enumerated() {
-//            let contactDict: [String: Any] = [
-//                "name": contact.name,
-//                "email": contact.email,
-//                "phone": contact.mobileNumber
-//            ]
-//            contactsDict["contact_\(index)"] = contactDict
-//            print(contactsDict)
-//        }
-//        UserDefaults.standard.set(contactsDict, forKey: "contacts")
-//    }
-    func saveContactsToUserDefaults() {
-        if let encoded = try? JSONEncoder().encode(contacts) {
-             UserDefaults.standard.set(encoded, forKey: "items")
-         }
-    }
+    
 }
